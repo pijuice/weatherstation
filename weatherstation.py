@@ -56,7 +56,7 @@ def SendMessage(LightReading,GasReading,TempReading,HumidityReading):
 	port.write("AT+CMGF=1\r")
 	response=port.readlines(None)
 	print (response)
-	port.write('AT+CMGS="+447941510086"\r') 
+	port.write('AT+CMGS="+44**********"\r') #put your tellephone number in here 
 	response=port.readlines(None)
 	print (response)
 	port.write(str(SMS)+"\r")
