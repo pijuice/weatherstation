@@ -1,3 +1,6 @@
+#PiJuice WeatherStation
+#Nick Pestell 2015
+
 import spidev
 import time
 import os
@@ -9,7 +12,7 @@ import Adafruit_DHT
 #delay = 5
 delay = 86400
 
-# setup for humidity sensor
+# ^setup for humidity sensor
 sensor = 22
 pin = 4
 
