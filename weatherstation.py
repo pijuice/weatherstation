@@ -1,4 +1,4 @@
-#PiJuice WeatherStation
+#PiJuice weatherstation
 #Nick Pestell 2015
 
 import spidev
@@ -12,7 +12,7 @@ import Adafruit_DHT
 #delay = 5
 delay = 86400
 
-# ^setup for humidity sensor
+#setup for humidity sensor
 sensor = 22
 pin = 4
 
@@ -39,9 +39,12 @@ def ConvertVolts(data,places):
 	return volts
 
 # convert voltage to a percentage
-def ConvertPercent(VoltReading,places):
-	Percentage = ((3.3-VoltReading)/3.3)*100
-	Percentage = round(Percentage,places)
+def ConvertPercent(VoltReading,places,x):
+	if x==1:
+		Percentage = ((3.3-VoltReading)/3.3)*100
+	elif x==2:
+		Percentage = (VoltReading/3.3)*100
+	Percentage=round(Percentage,places)
 	return Percentage 
 
 # convert temperature voltage to C
@@ -86,11 +89,13 @@ while True:
 	light_level      = ReadChannel(light_channel)
 	light_volts      = ConvertVolts(light_level,2)
 	light_percentage = ConvertPercent(light_volts,2)
+	light_percentage = ConvertPercent(light_volts,2,2)
 
 #take gas reading and convert to a percentage
 	gas_level      = ReadChannel(gas_channel)
 	gas_volts      = ConvertVolts(gas_level,2)
 	gas_percentage = ConvertPercent(gas_volts,2)	
+	gas_percentage = ConvertPercent(gas_volts,2,1)	
 
 #take temperature reading convert to C
 	temp_level  = ReadChannel(temp_channel)
